@@ -11,13 +11,16 @@ public class OrdenamientoBurbuja {
     // metodo rdenamiento burbuja normal
     public static void ordenamientoBurbuja(int[] arreglo) {
         int n = arreglo.length;
-        
+
+        //externo porque controla el numero de pasadas
         for (int i = 0; i < n - 1; i++) {
+
+            //interno porque aqui compara y desplaza los valores mayores a la derecha
             for (int j = 0; j < n - 1 - i; j++) {
                 
-                
+                //si el elemento es mayor que el siguiente se intercambia posiciones
                 if (arreglo[j] > arreglo[j + 1]) {
-                    // intercambio usando variable temporal (swap)
+                    // intercambio, aqui use la variable llamada temporal (swap)
                     int temporal = arreglo[j];
                     arreglo[j] = arreglo[j + 1];
                     arreglo[j + 1] = temporal;
@@ -27,25 +30,26 @@ public class OrdenamientoBurbuja {
         
     }
 
-    // Método 2rdenamiento Burbuja Mejorado (Optimizado con bandera)
+    // metodo 2rdenamiento Burbuja Mejorado con bandera
     public static void ordenamientoBurbujaMejorado(int[] arreglo) {
         int n = arreglo.length;
-        boolean huboIntercambio;
+        boolean huboIntercambio;//bandera para saber si hubo cambios en la pasada
         
 
         for (int i = 0; i < n - 1; i++) {
-            huboIntercambio = false; 
+            //al iniciar cada pasada se reinicia la bandera
+            huboIntercambio = false; //falso osea que no hubo intercambio
 
             for (int j = 0; j < n - 1 - i; j++) {
                 
-                
+                //comparar los elementos vecinos
                 if (arreglo[j] > arreglo[j + 1]) {
                     // intercambio (swap)
                     int temporal = arreglo[j];
                     arreglo[j] = arreglo[j + 1];
                     arreglo[j + 1] = temporal;
                     
-                    huboIntercambio = true; 
+                    huboIntercambio = true; //si hubo intercambio
                 }
             }
 
@@ -74,12 +78,12 @@ public class OrdenamientoBurbuja {
         
         System.out.println("=== PRUEBA 1: BURBUJA NORMAL ===");
         System.out.print("estado inicial: ");
-        imprimirArreglo(desordenado);
+        imprimirArreglo(desordenado);//va a mostrar el arreglo antes de ordenarlo
         
-        ordenamientoBurbuja(desordenado);
+        ordenamientoBurbuja(desordenado);//burbuja normal
         
         System.out.print("estado final:   ");
-        imprimirArreglo(desordenado);
+        imprimirArreglo(desordenado);//muestra arreglo ya ordenado
 
         System.out.println();
 
@@ -88,12 +92,12 @@ public class OrdenamientoBurbuja {
         
         System.out.println("=== PRUEBA 2: BURBUJA MEJORADO (OPTIMIZADO) ===");
         System.out.print("estado inicial: ");
-        imprimirArreglo(parcialmenteOrdenado);
+        imprimirArreglo(parcialmenteOrdenado);//va a mostrar el estado inicial
         
-        ordenamientoBurbujaMejorado(parcialmenteOrdenado);
+        ordenamientoBurbujaMejorado(parcialmenteOrdenado);//aqui se ejecuta con bndera
         
         System.out.print("estado final:   ");
-        imprimirArreglo(parcialmenteOrdenado);
+        imprimirArreglo(parcialmenteOrdenado);//muestra el resultado final 
     }
     
 }
